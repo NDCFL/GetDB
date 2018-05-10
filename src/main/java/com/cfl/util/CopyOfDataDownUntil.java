@@ -5,6 +5,10 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -88,9 +92,35 @@ public class CopyOfDataDownUntil {
         }
         return null;
     }
-    public static void main(String arg[]){
+    public static void main1(String arg[]){
 //        getData("http://www.qq.com","gbk");
         getDatas("https://www.audible.com/");
+    }
+    public static void main(String arg[]){
+       try{
+           //第一个参数表示输入参数，用谷歌        第二个参数表示谷歌安装路径
+           System.setProperty("webdriver.chrome.driver", "C:\\com\\chromedriver.exe");
+           //获取谷歌驱动
+           WebDriver webDriver=new ChromeDriver();
+           //打开浏览器
+           webDriver.get("https://www.instagram.com/accounts/login/");
+           System.out.println("打开页面");
+           //暂停
+           Thread.sleep(1000);
+           //屏幕最大化
+           webDriver.manage().window().maximize();
+
+           //使用Xpath获取
+           webDriver.findElement(By.id("f26b8ac696c4998")).sendKeys("jiumu9711");
+           webDriver.findElement(By.id("f2208c59425f134")).sendKeys("Gi&rAaoF");
+
+           Thread.sleep(3000);
+           webDriver.findElement(By.className("_qv64e       _gexxb _4tgw8    _jfvwv    ")).click();
+           ((JavascriptExecutor) webDriver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+       }catch (Exception e){
+
+       }
+
 
     }
 }
