@@ -33,13 +33,12 @@ public class English  {
 //                System.out.println(title.text());//打印标题
                 try{
                     Element content = elementes.getElementsByTag("ul").get(0);
-                    System.out.println(content.text());
+                    System.out.println(img.getElementsByTag("div").get(1).getElementsByTag("img").attr("src")+"======"+img.getElementsByTag("div").get(2).getElementsByTag("a").attr("href")+content.text());
                 }catch (Exception e){
                     Element content = elementes.getElementsByTag("p").get(0);
-                    System.out.println(content.text());
+                    System.out.println(img.getElementsByTag("div").get(1).getElementsByTag("img").attr("src")+"======"+img.getElementsByTag("div").get(2).getElementsByTag("a").attr("href")+content.text());
                 }
             }
-            getDatas();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,23 +50,22 @@ public class English  {
         System.setProperty("webdriver.chrome.driver", "C:\\com\\chromedriver.exe");
         WebDriver webDriver=new ChromeDriver();
         //打开浏览器
-        webDriver.get("https://www.instagram.com/accounts/login/");
+        webDriver.get("https://www.dealmoon.co.uk/");
         System.out.println("打开页面");
+        ((JavascriptExecutor) webDriver).executeScript("scrollTo(0,30000)");
         getDatas("https://m.dealmoon.co.uk/");
-        ((JavascriptExecutor) webDriver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-
     }
     public static void getDatas(){
         //第一个参数表示输入参数，用谷歌        第二个参数表示谷歌安装路径
         System.setProperty("webdriver.chrome.driver", "C:\\com\\chromedriver.exe");
         WebDriver webDriver=new ChromeDriver();
         //打开浏览器
-        ((JavascriptExecutor) webDriver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-
+        ((JavascriptExecutor) webDriver).executeScript("scrollTo(0,3000)");
     }
     public static void main(String arg[]){
-//        getData("http://www.qq.com","gbk");
-        open();
+        for(int i=1;i<100;i++){
+            getDatas("https://www.dealmoon.co.uk/?p="+i);
+        }
 
     }
 }
